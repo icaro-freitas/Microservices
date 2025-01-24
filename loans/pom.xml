@@ -71,7 +71,7 @@
 				<version>3.4.2</version>
 				<configuration>
 					<to>
-						<image>icaro2025freitas/${project.artifactId}:s4</image>
+						<image>eazybytes/${project.artifactId}:s6</image>
 					</to>
 				</configuration>
 			</plugin>

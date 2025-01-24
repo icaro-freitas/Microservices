@@ -1,38 +1,37 @@
 services:
   accounts:
-    image: "icaro2025freitas/accounts:s4"
+    image: "eazybytes/accounts:s4"
     container_name: accounts-ms
     ports:
       - "8080:8080"
-    deploy: 
+    deploy:
       resources:
         limits:
           memory: 700m
     networks:
-      - bank      
-
+      - eazybank
   loans:
-    image: "icaro2025freitas/loans:s4"
+    image: "eazybytes/loans:s4"
     container_name: loans-ms
     ports:
       - "8090:8090"
-    deploy: 
+    deploy:
       resources:
         limits:
-          memory: 700m  
+          memory: 700m
     networks:
-      - bank             
+      - eazybank
   cards:
-    image: "icaro2025freitas/cards:s4"
+    image: "eazybytes/cards:s4"
     container_name: cards-ms
     ports:
       - "9000:9000"
-    deploy: 
+    deploy:
       resources:
         limits:
-          memory: 700m    
+          memory: 700m
     networks:
-      - bank  
+      - eazybank
 networks:
-  bank:
-    driver: "bridge"                      
+  eazybank:
+    driver: "bridge"
