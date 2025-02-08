@@ -46,5 +46,5 @@ eureka:
 info: 
   app:
     name: "loans"
-    description: "Eazy Bank Account Application"
+    description: "Eazy Bank Loans Application"
     version: "1.0"        
