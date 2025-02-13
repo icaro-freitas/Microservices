@@ -1,5 +1,10 @@
 package com.eazybytes.accounts.service.impl;
 
+import java.util.Optional;
+import java.util.Random;
+
+import org.springframework.stereotype.Service;
+
 import com.eazybytes.accounts.constants.AccountsConstants;
 import com.eazybytes.accounts.dto.AccountsDto;
 import com.eazybytes.accounts.dto.CustomerDto;
@@ -12,12 +17,8 @@ import com.eazybytes.accounts.mapper.CustomerMapper;
 import com.eazybytes.accounts.repository.AccountsRepository;
 import com.eazybytes.accounts.repository.CustomerRepository;
 import com.eazybytes.accounts.service.IAccountsService;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.util.Optional;
-import java.util.Random;
+import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
