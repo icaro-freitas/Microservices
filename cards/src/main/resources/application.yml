@@ -26,10 +26,18 @@ management:
     web:
       exposure:
         include: "*"
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true        
   endpoint:
     shutdown:
       enabled: true
-      # Deprecated, use "access: unrestricted" in later versions                    
+      # Deprecated, use "access: unrestricted" in later versions
+    health:
+      probes:
+        enabled: true                         
   info: 
     env:
       enabled: true           
