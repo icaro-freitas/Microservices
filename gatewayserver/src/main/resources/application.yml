@@ -8,7 +8,11 @@ spring:
       discovery:
         locator:
           enabled: false
-          lowerCaseServiceId: true      
+          lowerCaseServiceId: true     
+      httpclient:
+        connect-timeout: 1000
+        reponse-timeout: 2s
+               
 
 management:
   endpoints:
