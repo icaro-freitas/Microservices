@@ -37,7 +37,13 @@ management:
       # Deprecated, use "access: unrestricted" in later versions
     health:
       probes:
-        enabled: true               
+        enabled: true  
+  info: 
+    env:
+      enabled: true             
+  metrics:
+    tags:
+      application: ${spring.application.name}                   
 
 eureka:
   instance:
