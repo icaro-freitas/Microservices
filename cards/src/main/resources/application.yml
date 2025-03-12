@@ -64,4 +64,6 @@ logging:
   level:
     com:
       eazybytes:
-        cards: DEBUG    
+        cards: DEBUG   
+  pattern:
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"         
