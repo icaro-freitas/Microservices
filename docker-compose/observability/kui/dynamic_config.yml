@@ -1,0 +1,9 @@
+server:
+  port: 8080  # Kafka UI will run on http://localhost:8080
+
+kafka:
+  clusters:
+    - name: "local"
+      bootstrapServers: "kafka:9092"
+      properties:
+        security.protocol: PLAINTEXT
