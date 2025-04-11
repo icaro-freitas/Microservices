@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.circuitbreaker.resilience4j.ReactiveResilience4JCircuitBreakerFactory;
 import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JConfigBuilder;
 import org.springframework.cloud.client.circuitbreaker.Customizer;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.gateway.filter.ratelimit.KeyResolver;
 import org.springframework.cloud.gateway.filter.ratelimit.RedisRateLimiter;
 import org.springframework.cloud.gateway.route.RouteLocator;
@@ -20,6 +21,7 @@ import io.github.resilience4j.timelimiter.TimeLimiterConfig;
 import reactor.core.publisher.Mono;
 
 @SpringBootApplication
+@EnableDiscoveryClient
 public class GatewayserverApplication {
 
 	public static void main(String[] args) {
@@ -35,7 +37,7 @@ public class GatewayserverApplication {
 								.addResponseHeader("X-Response-Time", LocalDateTime.now().toString())
 								.circuitBreaker(config->config.setName("accountsCircuitBreaker")
 										.setFallbackUri("forward:/contactSupport")))
-						.uri("lb://ACCOUNTS"))
+						.uri("http://accounts:8080"))
 			.route(p -> p
 					.path("/eazybank/loans/**")
 					.filters( f -> f.rewritePath("/eazybank/loans/(?<segment>.*)","/${segment}")
@@ -44,14 +46,14 @@ public class GatewayserverApplication {
 								.setMethods(HttpMethod.GET)
 								.setBackoff(Duration.ofMillis(100),Duration.ofMillis(1000),2,true)
 								))
-					.uri("lb://LOANS"))
+					.uri("http://loans:8090"))
 			.route(p -> p
 					.path("/eazybank/cards/**")
 					.filters( f -> f.rewritePath("/eazybank/cards/(?<segment>.*)","/${segment}")
 							.addResponseHeader("X-Response-Time", LocalDateTime.now().toString())
 							.requestRateLimiter(config->config.setRateLimiter(redisRateLimiter())
 							.setKeyResolver(userKeyResolver())))
-					.uri("lb://CARDS")).build();
+					.uri("http://cards:9000")).build();
 	}
 	
 	@Bean

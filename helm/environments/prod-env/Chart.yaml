@@ -31,10 +31,6 @@ dependencies:
   - name: configserver
     version: 0.1.0
     repository: file://../../eazybank-services/configserver
-    
-  - name: eurekaserver
-    version: 0.1.0
-    repository: file://../../eazybank-services/eurekaserver
   
   - name: accounts
     version: 0.1.0

@@ -4,14 +4,18 @@ spring:
   config:
     import: "optional:configserver:http://localhost:8071/"
   cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: false
-          lowerCaseServiceId: true     
+    gateway:  
       httpclient:
         connect-timeout: 1000
         response-timeout: 10s
+    kubernetes:
+      discovery:
+        enabled: true
+        all-namespaces: true    
+    discovery:
+      client:
+        health-indicator:
+          enabled: false            
 
   data:
     redis:

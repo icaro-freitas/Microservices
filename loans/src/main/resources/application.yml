@@ -20,6 +20,10 @@ spring:
     show-sql: true
   config:
     import: "optional:configserver:http://localhost:8071/"
+  cloud:
+    kubernetes:
+      discovery:
+        all-namespaces: true    
 
 management:
   endpoints:
@@ -44,16 +48,7 @@ management:
   metrics:
     tags:
       application: ${spring.application.name}                   
-
-eureka:
-  instance:
-    preferIpAddress: true
-  client:
-    fetchRegistry: true
-    registerWithEureka: true
-    serviceUrl:
-      defaultZone: http://localhost:8070/eureka/        
-
+ 
 info: 
   app:
     name: "loans"

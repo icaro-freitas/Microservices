@@ -1,5 +1,6 @@
 package com.eazybytes.accounts.controller;
 
+import org.apache.hc.core5.http.HttpStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -47,7 +48,7 @@ public class CustomerController {
 		logger.debug("fetchCustomerDetails method start");
 		CustomerDetailsDto customerDetailsDto = iCustomersService.fetchCustomerDetails(mobileNumber, correlationId);
 		logger.debug("fetchCustomerDetails method end");
-		return ResponseEntity.status(org.apache.http.HttpStatus.SC_OK).body(customerDetailsDto);
+		return ResponseEntity.status(HttpStatus.SC_OK).body(customerDetailsDto);
 	}
 
 }
